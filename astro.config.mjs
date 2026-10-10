@@ -8,7 +8,7 @@ import { defineConfig } from 'astro/config';
 // The sitemap is written after the build from dist/ (scripts/sitemap.mjs).
 
 export default defineConfig({
-  site: 'https://airfone.app',
+  site: 'https://lunacam.app',
   output: 'static',
   trailingSlash: 'never',
   build: {

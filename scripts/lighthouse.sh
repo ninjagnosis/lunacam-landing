@@ -3,7 +3,7 @@
 # Usage: pnpm build && pnpm exec astro preview --port 4362 & ; scripts/lighthouse.sh [base-url]
 set -euo pipefail
 BASE="${1:-http://localhost:4362}"
-OUT="${TMPDIR:-/tmp}/airfone-lighthouse"
+OUT="${TMPDIR:-/tmp}/lunacam-lighthouse"
 mkdir -p "$OUT"
 fail=0
 for p in / /products/ai-call-agent /products/website-chatbot /solutions/banks /demo /resellers /blog /privacy; do

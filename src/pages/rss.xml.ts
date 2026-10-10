@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
   const items = published(await getCollection('blog'));
   return rss({
     title: 'LunaCam blog',
-    description: 'Guides for Nepali businesses on answering every call.',
+    description: 'Guides on CCTV cameras, DVRs, recordings and evidence in Nepal.',
     site: context.site!,
     items: items.map((p) => ({
       title: p.data.title,
