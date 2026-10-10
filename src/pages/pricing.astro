@@ -4,7 +4,6 @@ import Faq from '../components/site/Faq.astro';
 import CtaBand from '../components/site/CtaBand.astro';
 import Related from '../components/site/Related.astro';
 import ArrowRight from '@lucide/astro/icons/arrow-right';
-import Check from '@lucide/astro/icons/check';
 import { plans, addons, pricingFaq } from '../data/plans';
 import { products } from '../data/products';
 import { solutions } from '../data/solutions';
@@ -31,7 +30,7 @@ import { breadcrumbJsonLd, faqJsonLd } from '../lib/seo';
             <p class="pitch">{p.pitch}</p>
             {p.builds && <p class="builds">Everything in {p.builds}, plus</p>}
             <ul class="feat">
-              {p.features.map((f) => <li><Check size={18} stroke-width={2} aria-hidden="true" />{f}</li>)}
+              {p.features.map((f) => <li>{f}</li>)}
             </ul>
             <a class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} href={p.cta.href}>{p.cta.label}</a>
           </li>
@@ -74,8 +73,7 @@ import { breadcrumbJsonLd, faqJsonLd } from '../lib/seo';
   .per { color: var(--ink-muted); font-size: 15px; }
   .pitch { margin: 0; font-weight: 600; }
   .feat { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
-  .feat li { display: grid; grid-template-columns: 18px 1fr; gap: var(--space-2); font-size: 16px; }
-  .feat :global(svg) { color: var(--link); margin-top: 3px; }
+  .feat li { padding-top: var(--space-2); border-top: 1px solid var(--line); font-size: 16px; }
   .plan .btn { justify-self: start; margin-top: var(--space-3); }
   .addons { background: var(--surface); border-block: 1px solid var(--line); }
   .addons h2 { margin-bottom: var(--space-5); }
