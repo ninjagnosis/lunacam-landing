@@ -3,7 +3,7 @@
 Single source of truth for every value used in `src/`. A value in the code
 that isn't listed here is a bug: fix the code or extend this file. The site is
 black and white (owner, 2026-10-10), with Inter for all text, as in the
-LunaCam app. Photos are converted to greyscale.
+LunaCam app. Photos stay in colour.
 
 ## No AI look
 
@@ -17,11 +17,11 @@ enforces what can be checked by code.
 | Token | Value | Use |
 |---|---|---|
 | `--canvas` | `#FFFFFF` | page background |
-| `--surface` | `#F5F5F5` | soft panels, forms, footer |
-| `--subtle` | `#EBEBEB` | quiet fills, hover |
-| `--line` | `#D4D4D4` | 1px borders |
+| `--surface` | `#F2F2F2` | soft panels, forms, footer |
+| `--subtle` | `#E4E4E4` | quiet fills, hover |
+| `--line` | `#B8B8B8` | 1px borders |
 | `--ink` | `#0A0A0A` | text |
-| `--ink-muted` | `#404040` | secondary text |
+| `--ink-muted` | `#262626` | secondary text |
 | `--brand` | `#0A0A0A` | primary buttons |
 | `--on-brand` | `#FFFFFF` | text on brand |
 | `--link` | `#0A0A0A` | links, focus ring, current page |
@@ -29,8 +29,8 @@ enforces what can be checked by code.
 | `--on-lime` | `#0A0A0A` | text on the accent |
 | `--stage` | `#0A0A0A` | the dark sections |
 | `--stage-ink` | `#FFFFFF` | text on stage |
-| `--stage-muted` | `#BFBFBF` | secondary text on stage |
-| `--stage-line` | `#3D3D3D` | borders on stage |
+| `--stage-muted` | `#E0E0E0` | secondary text on stage |
+| `--stage-line` | `#5C5C5C` | borders on stage |
 | `--error` | `#B3261E` | form errors |
 
 Print only: `#FFFFFF` background, `#000000` text.
@@ -64,6 +64,7 @@ Radius 8px (controls), 12px (panels). Inline code 4px. Borders 1px. No
 - Section entrance: opacity plus 8px translate, 250ms, only for content below
   the first screen, never hides content without JS.
 - Event lists reveal one line at a time when they scroll into view.
+- No scroll-linked fading or dimming: content is at full strength once it is on screen.
 - `prefers-reduced-motion: reduce` turns all of it off.
 
 ## Demos

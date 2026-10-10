@@ -1,11 +1,11 @@
 /* LunaCam tokens. Every value here is listed in DESIGN.md; nothing outside it. */
 :root {
   --canvas: #FFFFFF;
-  --surface: #F5F5F5;
-  --subtle: #EBEBEB;
-  --line: #D4D4D4;
+  --surface: #F2F2F2;
+  --subtle: #E4E4E4;
+  --line: #B8B8B8;
   --ink: #0A0A0A;
-  --ink-muted: #404040;
+  --ink-muted: #262626;
   --brand: #0A0A0A;
   --on-brand: #FFFFFF;
   --link: #0A0A0A;
@@ -13,8 +13,8 @@
   --on-lime: #0A0A0A;
   --stage: #0A0A0A;
   --stage-ink: #FFFFFF;
-  --stage-muted: #BFBFBF;
-  --stage-line: #3D3D3D;
+  --stage-muted: #E0E0E0;
+  --stage-line: #5C5C5C;
   --error: #B3261E;
 
   /* Inter for everything, as in the LunaCam app. */
