@@ -10,22 +10,22 @@ describe('sitemap', () => {
     expect(pathFor('blog/index.html')).toBe('/blog');
   });
   it('leaves out noindex, missing or foreign canonicals', () => {
-    const ok = readPage(page('<link rel="canonical" href="https://airfone.app/demo">'), '/demo');
+    const ok = readPage(page('<link rel="canonical" href="https://lunacam.app/demo">'), '/demo');
     expect(exclusion(ok)).toBeNull();
-    expect(exclusion(readPage(page('<link rel="canonical" href="https://airfone.app/demo"><meta name="robots" content="noindex, follow">'), '/demo'))).toBe('noindex');
+    expect(exclusion(readPage(page('<link rel="canonical" href="https://lunacam.app/demo"><meta name="robots" content="noindex, follow">'), '/demo'))).toBe('noindex');
     expect(exclusion(readPage(page(''), '/demo'))).toBe('no canonical');
-    expect(exclusion(readPage(page('<link rel="canonical" href="https://airfone.app/other">'), '/demo'))).toMatch(/canonical points/);
-    expect(exclusion(readPage(page('<link rel="canonical" href="https://airfone.app/404">'), '/404'))).toBe('not a page');
+    expect(exclusion(readPage(page('<link rel="canonical" href="https://lunacam.app/other">'), '/demo'))).toMatch(/canonical points/);
+    expect(exclusion(readPage(page('<link rel="canonical" href="https://lunacam.app/404">'), '/404'))).toBe('not a page');
   });
   it('collects absolute on-site images only', () => {
-    const p = readPage(page('<meta property="og:image" content="https://airfone.app/og/a.png">', '<img src="/assets/a.webp"><img src="https://cdn.x/b.png"><img src="data:x">'), '/a');
-    expect(p.images).toEqual(['https://airfone.app/og/a.png', 'https://airfone.app/assets/a.webp']);
+    const p = readPage(page('<meta property="og:image" content="https://lunacam.app/og/a.png">', '<img src="/assets/a.webp"><img src="https://cdn.x/b.png"><img src="data:x">'), '/a');
+    expect(p.images).toEqual(['https://lunacam.app/og/a.png', 'https://lunacam.app/assets/a.webp']);
   });
   it('escapes XML and rejects bad entries', () => {
-    expect(toXml([{ loc: 'https://airfone.app/a&b', lastmod: '2026-10-01', images: [] }])).toContain('a&amp;b');
+    expect(toXml([{ loc: 'https://lunacam.app/a&b', lastmod: '2026-10-01', images: [] }])).toContain('a&amp;b');
     const bad = [
-      { loc: 'https://airfone.app/x/', lastmod: '2026-1-1', images: ['https://airfone.app/gone.png'] },
-      { loc: 'https://airfone.app/x/', lastmod: '2999-01-01', images: [] },
+      { loc: 'https://lunacam.app/x/', lastmod: '2026-1-1', images: ['https://lunacam.app/gone.png'] },
+      { loc: 'https://lunacam.app/x/', lastmod: '2999-01-01', images: [] },
       { loc: 'http://other.com/Y?q', lastmod: null, images: [] },
     ];
     const errs = validate(bad, '', () => false).join('\n');

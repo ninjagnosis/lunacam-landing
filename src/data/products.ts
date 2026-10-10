@@ -148,15 +148,15 @@ export const products: Product[] = [
       { h: 'Choose what to watch', p: 'Motion, person, vehicle, camera offline and disk health.' },
       { h: 'Set Home, Away or Disarm', p: 'Alerts on a schedule, with quiet hours and zones you choose.' },
       { h: 'Get the picture', p: 'Each push notification carries a snapshot.' },
-      { h: 'Escalate when nobody answers', p: 'No acknowledgement in 5 minutes calls the next person, by voice or WhatsApp.' },
+      { h: 'Escalate when nobody answers', p: 'No acknowledgement in 5 minutes calls the next person, by phone call.' },
     ],
-    specs: [['Alerts', 'Push with a snapshot'], ['Health', 'Camera offline and DVR disk warnings'], ['Schedules', 'Home, Away, Disarm, quiet hours, zones'], ['Alarm queue', 'Priority, assignment and acknowledgement reasons'], ['Escalation', 'Voice or WhatsApp through AirFone']],
+    specs: [['Alerts', 'Push with a snapshot'], ['Health', 'Camera offline and DVR disk warnings'], ['Schedules', 'Home, Away, Disarm, quiet hours, zones'], ['Alarm queue', 'Priority, assignment and acknowledgement reasons'], ['Escalation', 'Phone call to the next person']],
     gets: [
       'Push notifications with a snapshot',
       'Offline camera and disk failure warnings',
       'Arming schedules with quiet hours',
       'An alarm queue with checklists for operators',
-      'Escalation by voice or WhatsApp',
+      'Escalation by phone call',
     ],
     faq: [
       { q: 'Can I turn alerts off at night?', a: 'Yes. Set quiet hours and zones, or arm Home, Away and Disarm on a schedule.' },
@@ -170,7 +170,7 @@ export const products: Product[] = [
     short: 'Bookmarks, cases and verified exports with every step logged.',
     seoTitle: 'CCTV evidence export and Privacy Act compliance in Nepal',
     headline: 'Evidence you can hand to the police',
-    description: 'LunaCam helps banks, municipalities and businesses in Nepal bookmark footage, build cases and export evidence with a hash, a signed manifest and a full audit log.',
+    description: 'LunaCam helps banks, municipalities and businesses in Nepal bookmark footage, build cases and export evidence with a hash, signed manifest and audit log.',
     demo: { kind: 'feed', feed: 'evidence' },
     problem: {
       heading: 'Footage is only evidence if you can prove it',

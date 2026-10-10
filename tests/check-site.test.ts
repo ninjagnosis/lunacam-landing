@@ -20,7 +20,7 @@ describe('check-site', () => {
     ['SEO-6', /h1 to h4/],
     ['SEO-4', /description is 5 chars/],
     ['SEO-4', /title "Dup" also used/],
-    ['SEO-2', /canonical .* should be https:\/\/airfone\.app\/$/],
+    ['SEO-2', /canonical .* should be https:\/\/lunacam\.app\/$/],
     ['SEO-5', /og:image/],
     ['SD-2', /offers/],
     ['SD-7', /does not parse/],

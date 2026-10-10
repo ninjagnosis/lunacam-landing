@@ -33,11 +33,6 @@
 /ne/resellers/ /resellers 301
 /en/resellers /resellers 301
 /en/resellers/ /resellers 301
-/institutions/ /institutions 301
-/ne/institutions /institutions 301
-/ne/institutions/ /institutions 301
-/en/institutions /institutions 301
-/en/institutions/ /institutions 301
 /sitemap-index.xml /sitemap.xml 301
 /sitemap-0.xml /sitemap.xml 301
 /login https://app.lunacam.app/login 301

@@ -1,4 +1,4 @@
-# apps/landing — Astro static site producing an eShasan route bundle.
+# LunaCam landing site: Astro static site, bundled for the route-bundle pipeline.
 
 SLUG ?= $(notdir $(realpath ../..))
 APP  := $(notdir $(CURDIR))

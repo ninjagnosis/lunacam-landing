@@ -17,13 +17,13 @@ describe('normalisePhone', () => {
 });
 
 describe('buildBody', () => {
-  it('maps to the waitlist fields with name in source', () => {
+  it('maps to the lead fields with name in source', () => {
     const b = buildBody({ name: 'Ram', phone: '9841234567', business: 'Sharma', consent: true, type: 'bank', city: 'Pokhara' }, 'reseller', { utm_source: 'x' });
-    expect(b).toMatchObject({ phone: '9841234567', business_name: 'Sharma', business_type: 'other', locale: 'en', consent: true, utm_source: 'x' });
+    expect(b).toMatchObject({ phone: '9841234567', business_name: 'Sharma', business_type: 'bank', locale: 'en', consent: true, utm_source: 'x' });
     expect(b.source).toBe('reseller · name: Ram · city: Pokhara');
   });
   it('keeps allowed business types', () => {
-    expect(buildBody({ name: 'A', phone: '9841234567', business: 'B', consent: true, type: 'clinic' }, 'demo').business_type).toBe('clinic');
+    expect(buildBody({ name: 'A', phone: '9841234567', business: 'B', consent: true, type: 'shop' }, 'demo').business_type).toBe('shop');
   });
   it('caps source at 200 characters', () => {
     expect(buildBody({ name: 'n'.repeat(300), phone: '9841234567', business: 'B', consent: true }, 'demo').source.length).toBeLessThanOrEqual(200);

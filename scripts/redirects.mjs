@@ -24,7 +24,7 @@ export const exact = (() => {
   m.set('/ne', '/'); m.set('/ne/', '/');
   m.set('/en', '/'); m.set('/en/', '/');
   // Pages with a trailing slash or a locale prefix go to the plain page.
-  for (const p of ['/pricing', '/contact', '/privacy', '/terms', '/demo', '/resellers', '/institutions']) both(p, p);
+  for (const p of ['/pricing', '/contact', '/privacy', '/terms', '/demo', '/resellers']) both(p, p);
   // Sitemap names Astro integrations write.
   m.set('/sitemap-index.xml', '/sitemap.xml');
   m.set('/sitemap-0.xml', '/sitemap.xml');
