@@ -47,8 +47,9 @@ const plain = [
 <header class="site-header">
   <div class="wrap bar">
     <a class="logo" href="/" aria-label="LunaCam home">
-      <img src="/brand/lunacam-lockup.svg" alt="LunaCam" width="46" height="43" class="logo-light" />
+      <img src="/brand/lunacam-lockup.svg" alt="" width="46" height="43" class="logo-light" />
       <img src="/brand/lunacam-lockup-light.svg" alt="" width="46" height="43" class="logo-dark" aria-hidden="true" />
+      <span class="logo-text">lunacam</span>
     </a>
 
     <nav class="nav-wide" aria-label="Main">
@@ -171,7 +172,8 @@ const plain = [
   .u-links { display: flex; gap: var(--space-5); }
 
   .bar { display: flex; align-items: center; gap: var(--space-7); height: 72px; }
-  .logo { flex: none; display: block; }
+  .logo { flex: none; display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+  .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1; }
   .logo img { width: 56px; height: auto; }
   .logo-dark { display: none; }
 

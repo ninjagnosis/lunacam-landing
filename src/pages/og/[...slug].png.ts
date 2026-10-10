@@ -55,7 +55,8 @@ export async function GET({ props }: APIContext) {
             props: {
               style: { display: 'flex', alignItems: 'center', gap: 20 },
               children: [
-                { type: 'img', props: { src: cloud, width: 84, height: 79 } },
+                { type: 'img', props: { src: cloud, width: 96, height: 90 } },
+                { type: 'div', props: { style: { fontSize: 52, fontWeight: 700 }, children: 'lunacam' } },
               ],
             },
           },
