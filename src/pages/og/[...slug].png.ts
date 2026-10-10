@@ -48,20 +48,19 @@ export async function GET({ props }: APIContext) {
     {
       type: 'div',
       props: {
-        style: { width: 1200, height: 630, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 72, background: '#0A0A0A', color: '#FFFFFF', fontFamily: 'Inter' },
+        style: { width: 1200, height: 630, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 72, background: '#FFFFFF', color: '#0A0A0A', fontFamily: 'Inter' },
         children: [
           {
             type: 'div',
             props: {
               style: { display: 'flex', alignItems: 'center', gap: 20 },
               children: [
-                { type: 'img', props: { src: cloud, width: 72, height: 72 } },
-                { type: 'div', props: { style: { fontSize: 40, fontWeight: 600 }, children: 'LunaCam' } },
+                { type: 'img', props: { src: cloud, width: 84, height: 79 } },
               ],
             },
           },
           { type: 'div', props: { style: { fontSize: title.length > 40 ? 64 : 80, fontWeight: 600, lineHeight: 1.1, maxWidth: 1000 }, children: title } },
-          { type: 'div', props: { style: { fontSize: 30, color: '#BFBFBF' }, children: 'lunacam.app' } },
+          { type: 'div', props: { style: { fontSize: 30, color: '#262626' }, children: 'lunacam.app' } },
         ],
       },
     },
