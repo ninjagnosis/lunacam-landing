@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/site/Faq.astro';
+import CtaBand from '../components/site/CtaBand.astro';
+import Related from '../components/site/Related.astro';
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import Check from '@lucide/astro/icons/check';
+import { plans, addons, pricingFaq } from '../data/plans';
+import { products } from '../data/products';
+import { solutions } from '../data/solutions';
+import { breadcrumbJsonLd, faqJsonLd } from '../lib/seo';
+---
+<Base
+  title="Pricing: free live view, with cloud and institution plans in Nepal"
+  description="LunaCam live view and DVR playback are free to start. Cloud retention and institution plans are priced by camera count, retention days and features, in Nepali rupees."
+  path="/pricing"
+  jsonLd={[faqJsonLd(pricingFaq), breadcrumbJsonLd([{ name: 'Pricing', path: '/pricing' }])]}
+>
+  <section class="top">
+    <div class="wrap">
+      <h1 data-enter>Start free. Pay for what you add.</h1>
+      <ul class="plans">
+        {plans.map((p, i) => (
+          <li class:list={['plan', { featured: p.featured }]} data-enter style={`--d:${i + 1}`}>
+            <h2 class="name">{p.name}</h2>
+            <p class="for">{p.for}</p>
+            <p class="cost">
+              {p.price ? <span class="now">{p.price}</span> : <span class="now custom">Priced for your cameras</span>}
+              {p.per && <span class="per">{p.per}</span>}
+            </p>
+            <p class="pitch">{p.pitch}</p>
+            {p.builds && <p class="builds">Everything in {p.builds}, plus</p>}
+            <ul class="feat">
+              {p.features.map((f) => <li><Check size={18} stroke-width={2} aria-hidden="true" />{f}</li>)}
+            </ul>
+            <a class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} href={p.cta.href}>{p.cta.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight addons">
+    <div class="wrap">
+      <h2>Add to any plan</h2>
+      <ul class="add">
+        {addons.map((a) => (
+          <li><a href={a.href}><span class="an">{a.name}</span><span class="aw">{a.what}</span><ArrowRight size={18} stroke-width={2} aria-hidden="true" /></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Faq items={pricingFaq} />
+  <Related groups={[
+    { h: 'Products', items: products.map((p) => ({ href: `/products/${p.slug}`, label: p.name })) },
+    { h: 'Industries', items: solutions.map((x) => ({ href: `/solutions/${x.slug}`, label: x.name })) },
+    { h: 'Next steps', items: [{ href: '/demo', label: 'Book a walkthrough' }, { href: '/resellers', label: 'Become an installer partner' }, { href: '/contact', label: 'Contact sales' }] },
+  ]} />
+  <CtaBand />
+</Base>
+
+<style>
+  .top { padding-block: var(--space-9) var(--space-8); }
+  h1 { max-width: 18ch; margin-bottom: var(--space-8); }
+  .plans { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  .plan { display: grid; align-content: start; gap: var(--space-4); padding: var(--space-6); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+  .plan.featured { border-color: var(--brand); }
+  .name { font-size: 1.375rem; }
+  .for, .builds { margin: 0; color: var(--ink-muted); font-size: 16px; }
+  .cost { margin: 0; display: grid; gap: 2px; }
+  .now { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+  .now.custom { font-size: 1.125rem; }
+  .per { color: var(--ink-muted); font-size: 15px; }
+  .pitch { margin: 0; font-weight: 600; }
+  .feat { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+  .feat li { display: grid; grid-template-columns: 18px 1fr; gap: var(--space-2); font-size: 16px; }
+  .feat :global(svg) { color: var(--link); margin-top: 3px; }
+  .plan .btn { justify-self: start; margin-top: var(--space-3); }
+  .addons { background: var(--surface); border-block: 1px solid var(--line); }
+  .addons h2 { margin-bottom: var(--space-5); }
+  .add { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .add a { display: grid; grid-template-columns: minmax(0, 240px) 1fr auto; gap: var(--space-5); align-items: center; padding: var(--space-4) 0; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+  .an { font-weight: 600; }
+  .aw { color: var(--ink-muted); font-size: 16px; }
+  .add a:hover .an { color: var(--link); }
+  @media (max-width: 959px) {
+    .top { padding-block: var(--space-8); }
+    .plans { grid-template-columns: 1fr; }
+    .add a { grid-template-columns: 1fr auto; }
+    .aw { grid-column: 1 / -1; grid-row: 2; }
+  }
+</style>

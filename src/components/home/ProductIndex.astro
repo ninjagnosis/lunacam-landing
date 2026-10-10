@@ -1,0 +1,226 @@
+---
+// Product explorer: names on the left as tabs; on the right the selected
+// product's headline, a small picture of it working, and one link.
+// Every panel is in the HTML; without JS they simply stack.
+import { products } from '../../data/products';
+---
+<section class="section" id="products" data-reveal>
+  <div class="wrap">
+    <h2>Products</h2>
+    <product-tabs class="explorer">
+      <div class="tabs" role="tablist" aria-label="Products">
+        {products.map((p, i) => (
+          <button type="button" role="tab" id={`tab-${p.slug}`} aria-controls={`panel-${p.slug}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+            {p.name}
+          </button>
+        ))}
+      </div>
+      <div class="panels">
+        {products.map((p) => (
+          <article class="panel" role="tabpanel" id={`panel-${p.slug}`} aria-labelledby={`tab-${p.slug}`}>
+            <h3>{p.headline}</h3>
+
+            <figure class="pic" aria-hidden="true">
+              {p.slug === 'camera-app' && (
+                <ul class="rows">
+                  <li><span>Front gate</span><span class="tag live"><span class="dot"></span>Live</span></li>
+                  <li><span>Counter</span><span class="tag live"><span class="dot"></span>Live</span></li>
+                  <li><span>Main road</span><span class="tag ok">HD</span></li>
+                  <li><span>Stockroom</span><span class="tag">Offline</span></li>
+                </ul>
+              )}
+              {p.slug === 'lunacam-box' && (
+                <ul class="rows">
+                  <li><span>Hikvision DVR</span><span class="tag ok">Found</span></li>
+                  <li><span>Dahua camera</span><span class="tag ok">Found</span></li>
+                  <li><span>ONVIF camera</span><span class="tag">Default password</span></li>
+                  <li><span>Connection</span><span class="tag ok">Outbound only</span></li>
+                </ul>
+              )}
+              {p.slug === 'playback-clips' && (
+                <ul class="rows">
+                  <li><span>09:12 Motion</span><span class="tag">Counter</span></li>
+                  <li><span>11:40 Person</span><span class="tag">Front gate</span></li>
+                  <li><span>14:02 Vehicle</span><span class="tag">Main road</span></li>
+                  <li><span>Clip 14:02 to 14:03</span><span class="tag ok">Ready</span></li>
+                </ul>
+              )}
+              {p.slug === 'alerts' && (
+                <ul class="rows">
+                  <li><span>Person at Main shutter</span><span class="tag live"><span class="dot"></span>New</span></li>
+                  <li><span>Camera 6 offline</span><span class="tag">Offline</span></li>
+                  <li><span>DVR disk almost full</span><span class="tag">Disk</span></li>
+                  <li><span>Back gate motion</span><span class="tag ok">Acknowledged</span></li>
+                </ul>
+              )}
+              {p.slug === 'evidence' && (
+                <ul class="rows">
+                  <li><span>Bookmark</span><span class="tag ok">Done</span></li>
+                  <li><span>Case 0147</span><span class="tag ok">3 clips</span></li>
+                  <li><span>Export, SHA-256</span><span class="tag ok">Signed</span></li>
+                  <li><span>Shared link</span><span class="tag">Expires</span></li>
+                </ul>
+              )}
+              {p.slug === 'developer-platform' && (
+                <ul class="rows keys">
+                  <li><span class="key mono">1</span><span>REST API</span><span class="muted-s">OpenAPI</span></li>
+                  <li class="on"><span class="key mono">2</span><span>Signed webhooks</span><span class="muted-s">200 OK</span></li>
+                  <li><span class="key mono">3</span><span>Embeddable player</span><span class="muted-s">SDKs</span></li>
+                </ul>
+              )}
+            </figure>
+
+            <a class="more" href={`/products/${p.slug}`}>See {p.name}</a>
+          </article>
+        ))}
+      </div>
+    </product-tabs>
+  </div>
+</section>
+
+<script>
+  class ProductTabs extends HTMLElement {
+    connectedCallback() {
+      const tabs = Array.from(this.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+      const panels = Array.from(this.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+      const show = (i: number, focus = false) => {
+        tabs.forEach((t, j) => { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
+        panels.forEach((p, j) => {
+          const on = i === j;
+          if (on && p.hidden) { p.classList.remove('enter'); void p.offsetWidth; p.classList.add('enter'); }
+          p.hidden = !on;
+        });
+        if (focus) tabs[i].focus();
+      };
+      this.classList.add('is-live');
+      show(0);
+
+      // Auto-advance every DWELL ms while on screen; pause on hover or focus;
+      // stop for good once the visitor picks a product.
+      const DWELL = 4000;
+      let current = 0, timer = 0, visible = false, paused = false, stopped = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const schedule = () => {
+        clearTimeout(timer);
+        this.classList.toggle('is-auto', !stopped && visible && !paused);
+        if (stopped || !visible || paused) return;
+        // Restart the fill animation on the selected tab.
+        tabs[current].classList.remove('tick'); void tabs[current].offsetWidth; tabs[current].classList.add('tick');
+        timer = window.setTimeout(() => { current = (current + 1) % tabs.length; show(current); schedule(); }, DWELL);
+      };
+      const pick = (i: number) => { stopped = true; current = i; show(i); schedule(); };
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }, { threshold: 0.4 }).observe(this);
+      this.addEventListener('pointerenter', () => { paused = true; schedule(); });
+      this.addEventListener('pointerleave', () => { paused = false; schedule(); });
+      this.addEventListener('focusin', () => { paused = true; schedule(); });
+      this.addEventListener('focusout', () => { paused = false; schedule(); });
+
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => pick(i));
+        if (matchMedia('(hover: hover)').matches) {
+          let hover = 0;
+          t.addEventListener('pointerenter', () => { hover = window.setTimeout(() => { if (current !== i) { current = i; show(i); } }, 90); });
+          t.addEventListener('pointerleave', () => clearTimeout(hover));
+        }
+        t.addEventListener('keydown', (e) => {
+          const k = e.key;
+          const go = (n: number) => { e.preventDefault(); stopped = true; current = n; show(n, true); schedule(); };
+          if (k === 'ArrowDown' || k === 'ArrowRight') go((i + 1) % tabs.length);
+          if (k === 'ArrowUp' || k === 'ArrowLeft') go((i - 1 + tabs.length) % tabs.length);
+          if (k === 'Home') go(0);
+          if (k === 'End') go(tabs.length - 1);
+        });
+      });
+    }
+  }
+  if (!customElements.get('product-tabs')) customElements.define('product-tabs', ProductTabs);
+</script>
+
+<style>
+  .explorer { display: grid; grid-template-columns: minmax(240px, 0.7fr) 1.3fr; gap: var(--space-8); align-items: start; }
+  .tabs { display: grid; border-top: 1px solid var(--line); }
+  [role='tab'] {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    min-height: 60px; padding: 0; border: 0; border-bottom: 1px solid var(--line); background: none;
+    font-size: 18px; font-weight: 500; text-align: left; color: var(--ink-muted); cursor: pointer;
+    transition: color var(--fast) var(--ease);
+  }
+  [role='tab']:hover { color: var(--ink); }
+  [role='tab'] { position: relative; }
+  [role='tab'][aria-selected='true'] { color: var(--ink); font-weight: 600; }
+  [role='tab'][aria-selected='true']::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--brand); transform-origin: left; }
+  /* While auto-advancing, the underline fills up as a timer. */
+  .is-auto [role='tab'][aria-selected='true'].tick::after { animation: tick 4000ms linear; }
+  @keyframes tick { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .panel {
+    background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-panel);
+    padding: var(--space-7); min-height: 440px; display: grid; grid-template-rows: auto 1fr auto; gap: var(--space-6);
+  }
+  /* All panels share one grid cell, so the box is always as tall as the
+     tallest panel and switching never moves the page. */
+  .explorer.is-live .panels { display: grid; }
+  .explorer.is-live .panel { grid-area: 1 / 1; }
+  /* Crossfade: the outgoing panel fades out while the new one fades in. */
+  .explorer.is-live .panel { opacity: 1; visibility: visible; transition: opacity 700ms cubic-bezier(0.2, 0, 0, 1), visibility 0s; }
+  .explorer.is-live .panel[hidden] { display: grid; opacity: 0; visibility: hidden; transition: opacity 700ms cubic-bezier(0.2, 0, 0, 1), visibility 0s 700ms; }
+  .explorer:not(.is-live) .panel + .panel { margin-top: var(--space-4); }
+  .panel h3 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); line-height: 1.15; max-width: 16ch; }
+  .more { justify-self: start; color: var(--link); font-weight: 600; text-decoration: none; font-size: 17px; }
+  .more:hover { text-decoration: underline; }
+
+  /* The small pictures: white surfaces on the green, like real product UI. */
+  .pic { margin: 0; align-self: center; }
+  .call, .rows, .site { background: var(--canvas); color: var(--ink); border-radius: var(--radius-panel); padding: var(--space-5); }
+  .call { display: grid; gap: var(--space-2); }
+  .call-top { display: flex; align-items: center; gap: var(--space-2); font-size: 14px; font-weight: 600; margin-bottom: var(--space-2); }
+  .num { margin-left: auto; font-weight: 400; color: var(--ink-muted); font-size: 13px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex: none; }
+  .bub { margin: 0; padding: var(--space-2) var(--space-3); border-radius: var(--radius-panel); font-size: 15px; line-height: 1.45; max-width: 85%; }
+  .bub.agent { justify-self: start; background: var(--surface); border: 1px solid var(--line); }
+  .bub.caller { justify-self: end; background: var(--brand); color: var(--on-brand); }
+  .rows { list-style: none; margin: 0; display: grid; }
+  .rows li { display: flex; align-items: center; gap: var(--space-3); justify-content: space-between; padding: var(--space-3) 0; font-size: 15px; }
+  .rows li + li { border-top: 1px solid var(--line); }
+  .tag { display: inline-flex; align-items: center; gap: 6px; padding: 2px var(--space-2); border-radius: 6px; font-size: 13px; background: var(--subtle); color: var(--ink-muted); }
+  .tag.ok { color: var(--link); font-weight: 600; }
+  .tag.live { color: var(--ink); font-weight: 600; }
+  .keys li { justify-content: flex-start; }
+  .keys li > span:nth-child(2) { flex: 1; }
+  .key { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--radius-control); background: var(--subtle); font-weight: 600; }
+  .keys li.on .key { background: var(--lime); color: var(--on-lime); }
+  .keys li.on { font-weight: 600; }
+  .muted-s { color: var(--ink-muted); font-size: 13px; }
+  .site { padding: 0; overflow: hidden; }
+  .site-bar { display: flex; gap: 6px; padding: var(--space-3); border-bottom: 1px solid var(--line); }
+  .site-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+  .site-body { position: relative; display: grid; gap: var(--space-2); padding: var(--space-5) var(--space-5) var(--space-8); }
+  .ln { height: 10px; border-radius: 4px; background: var(--subtle); }
+  .w1 { width: 70%; } .w2 { width: 90%; } .w3 { width: 55%; }
+  .talk { position: absolute; right: var(--space-4); bottom: var(--space-4); display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-control); background: var(--brand); color: var(--on-brand); font-size: 14px; font-weight: 600; }
+  .bars { display: inline-flex; align-items: center; gap: 2px; height: 14px; }
+  .bars i { width: 3px; border-radius: 2px; background: var(--lime); }
+  .bars i:nth-child(1) { height: 6px; } .bars i:nth-child(2) { height: 12px; } .bars i:nth-child(3) { height: 9px; } .bars i:nth-child(4) { height: 14px; } .bars i:nth-child(5) { height: 7px; }
+
+  /* Switching products: the panel fades up, then its headline, picture and
+     link arrive in turn, and each row inside the picture pops in after that. */
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .panel.enter h3 { animation: rise 800ms cubic-bezier(0.2, 0, 0, 1) 80ms both; }
+  .panel.enter .pic { animation: rise 800ms cubic-bezier(0.2, 0, 0, 1) 240ms both; }
+  .panel.enter .more { animation: rise 800ms cubic-bezier(0.2, 0, 0, 1) 440ms both; }
+  .panel.enter :is(.bub, .rows li, .call-top, .site-body > *) { animation: pop 700ms cubic-bezier(0.2, 0, 0, 1) both; }
+  .panel.enter :is(.bub, .rows li, .call-top, .site-body > *):nth-child(1) { animation-delay: 420ms; }
+  .panel.enter :is(.bub, .rows li, .call-top, .site-body > *):nth-child(2) { animation-delay: 620ms; }
+  .panel.enter :is(.bub, .rows li, .call-top, .site-body > *):nth-child(3) { animation-delay: 820ms; }
+  .panel.enter :is(.bub, .rows li, .call-top, .site-body > *):nth-child(4) { animation-delay: 1020ms; }
+  @media (prefers-reduced-motion: reduce) { .panel.enter, .panel.enter * { animation: none !important; } }
+
+  @media (max-width: 959px) {
+    .explorer { grid-template-columns: 1fr; gap: var(--space-5); }
+    .tabs { display: flex; overflow-x: auto; border-top: 0; gap: var(--space-2); scrollbar-width: none; }
+    [role='tab'] { flex: none; min-height: 44px; padding: 0 var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-control); font-size: 16px; }
+    [role='tab'][aria-selected='true'] { border-color: var(--brand); color: var(--link); }
+    [role='tab'][aria-selected='true']::after { display: none; }
+    .panel { padding: var(--space-5); min-height: 0; }
+  }
+</style>

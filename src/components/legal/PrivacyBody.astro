@@ -1,0 +1,83 @@
+---
+import LegalBody from './LegalBody.astro';
+import { CONTACT_EMAIL, SECURITY_EMAIL, COMPANY, LEGAL_ADDRESS_LINE } from '../../config/site';
+
+const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
+const sec = `<a href="mailto:${SECURITY_EMAIL}">${SECURITY_EMAIL}</a>`;
+
+const c = {
+  h1: 'Privacy policy',
+  updated: 'Last updated 10 October 2026',
+  intro: [
+    `LunaCam is a product of ${COMPANY}, ${LEGAL_ADDRESS_LINE}. It lets people and organisations watch and manage cameras and recorders from a phone or a browser. This policy explains what we collect, why, where it is kept, how long, and what you can do about it.`,
+    `Questions about this policy: ${mail}.`,
+  ],
+  sections: [
+    {
+      h: 'What we collect',
+      list: [
+        '<strong>Your account:</strong> your name, email address, phone number, a password stored only as a secure hash, and the roles you hold in an organisation.',
+        '<strong>Your organisation:</strong> sites, devices, users and permissions, and the settings you choose.',
+        '<strong>Video and events:</strong> live video that passes through our relays, recordings, clips and snapshots you store with us, and events such as motion, offline and alarms.',
+        '<strong>Device credentials:</strong> the logins for your cameras and recorders. These are kept on your LunaCam Box or agent. They are not kept in the cloud in plain form.',
+        '<strong>Activity:</strong> an audit log of sign-ins, live views, playback, exports, PTZ moves, sharing and configuration changes.',
+        '<strong>Your devices:</strong> push notification tokens, app version, device type and the network addresses we use to keep accounts secure.',
+        '<strong>Billing:</strong> plan, invoices and payment records for paid accounts.',
+      ],
+    },
+    {
+      h: 'How we use it',
+      list: [
+        'To show you your cameras, play back recordings and send alerts.',
+        'To keep accounts and sites secure and to investigate misuse.',
+        'To provide the audit log, evidence and compliance features your organisation turns on.',
+        'To bill paid accounts and keep the records the law requires.',
+        'To support you when you ask us to.',
+      ],
+      after: ['We do not sell your data and we do not use your video to train models for anyone else.'],
+    },
+    {
+      h: 'Where it is kept',
+      p: ['Account data, video, snapshots, events, audit logs and backups are stored on servers in Nepal, and the processing runs on LunaCam-operated servers in Nepal. We do not transfer customer data across borders by default. Video also exists on your own recorders and on the box, which are outside our hosting.'],
+    },
+    {
+      h: 'Who we share it with',
+      list: [
+        '<strong>People in your organisation,</strong> as your roles and permissions allow.',
+        '<strong>People you choose,</strong> through shares and links you create, which can expire.',
+        '<strong>Police and courts,</strong> when the law requires it and the organisation that holds the footage has approved or been ordered to hand it over. Requests from foreign authorities are not served directly. They must come through Nepali legal channels.',
+        '<strong>Service providers</strong> that run parts of the service, under written terms. A current list is available on request.',
+      ],
+    },
+    {
+      h: 'How long we keep it',
+      list: [
+        'Recordings follow your recording policy. Organisations covered by the Privacy Act, 2075 have a floor of 90 days.',
+        'Footage under legal hold or in an open case is kept until the hold or case is closed.',
+        'Events and snapshots attached to events: 12 months by default, set by the organisation.',
+        'Audit log: 3 years.',
+        'Billing records and invoices: 7 years.',
+        'Backups: 14 days, then removed.',
+        'Closed accounts: organisation data is removed within 30 days of closure, except data under a hold or a legal duty.',
+      ],
+    },
+    {
+      h: 'Security',
+      p: [`Video is encrypted in transit with TLS and, for live video, SRTP with DTLS. Data at rest is encrypted. Access to production is limited and logged. To report a vulnerability, write to ${sec}.`],
+    },
+    {
+      h: 'Your rights',
+      p: [`You can ask us to give you your data, correct it or delete it. Write to ${mail}. Where footage belongs to an organisation, the request goes to that organisation, and we help it respond. We cannot delete data that is under a legal hold or that the law requires us to keep. See <a href="/delete-account">how to delete your account</a>.`],
+    },
+    {
+      h: 'Cameras and the people they record',
+      p: ['If you operate cameras, you are responsible for lawful use: placing them, telling people where required, keeping and handing over footage as the law asks. LunaCam gives you tools for the notice, retention and delivery duties in the Privacy Act, 2075, but the duty stays with you.'],
+    },
+    {
+      h: 'Changes',
+      p: ['We will post changes here and change the date at the top. For material changes we will also tell account owners.'],
+    },
+  ],
+};
+---
+<LegalBody h1={c.h1} updated={c.updated} intro={c.intro} sections={c.sections} />

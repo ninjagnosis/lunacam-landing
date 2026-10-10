@@ -1,0 +1,74 @@
+---
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import Base from '../../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import { photos } from '../../data/photos';
+import CtaBand from '../../components/site/CtaBand.astro';
+import Faq from '../../components/site/Faq.astro';
+import { solutions, type Solution } from '../../data/solutions';
+import { productBySlug } from '../../data/products';
+import Related from '../../components/site/Related.astro';
+import { posts } from '../../lib/posts';
+import { solutionTags } from '../../data/links';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return solutions.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Solution };
+const path = `/solutions/${s.slug}`;
+const used = s.products.map(productBySlug).filter((p) => !!p);
+const guides = (await posts()).filter((x) => !x.data.draft && x.data.tags.some((t) => solutionTags[s.slug]?.includes(t))).slice(0, 4);
+---
+<Base title={`CCTV cameras for ${s.name.toLowerCase()} in Nepal`} description={s.description} path={path} jsonLd={[serviceJsonLd(s), faqJsonLd(s.faq), breadcrumbJsonLd([{ name: s.name, path }])]}>
+  <section class="top">
+    <div class="wrap grid">
+      <div>
+        <h1 class="rise">{s.headline.split(' ').map((w, i) => (<><span class="w"><span style={`--i:${i}`}>{w}</span></span>{' '}</>))}</h1>
+      </div>
+      <div class="photo-panel" data-enter style="--d:1"><Image src={photos[s.photo].src} alt={photos[s.photo].alt.en} widths={[480, 800, 1080]} sizes="(max-width: 959px) 100vw, 540px" quality={85} format="webp" class="photo" /></div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <h2>What people ask of their cameras</h2>
+      <ul class="calls" data-stagger>
+        {s.asks.map((c, i) => (
+          <li style={`--i:${i}`}>
+            <span class="q">“{c.q}”</span>
+            <span class="a"><ArrowRight class="to" size={16} stroke-width={2} aria-hidden="true" />{c.a}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Related groups={[
+    { h: 'Products to use', items: used.map((x) => ({ href: `/products/${x!.slug}`, label: x!.name })) },
+    { h: 'Guides', items: guides.map((g) => ({ href: `/blog/${g.id}`, label: g.data.title })) },
+    { h: 'Other industries', items: solutions.filter((x) => x.slug !== s.slug).map((x) => ({ href: `/solutions/${x.slug}`, label: x.name })) },
+  ]} />
+
+  <Faq items={s.faq} />
+  <CtaBand />
+</Base>
+
+<style>
+  .top { padding-block: var(--space-9); border-bottom: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+  h1 { max-width: 14ch; }
+  .photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-panel); }
+  .two { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--space-8); align-items: start; }
+  .section h2 { margin-bottom: var(--space-5); }
+  .calls { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .calls li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-5); align-items: baseline; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+  .q { font-family: 'Source Serif 4 Variable', 'Serif Fallback', Georgia, serif; font-size: 1.0625rem; line-height: 1.3; }
+  .a { display: flex; gap: var(--space-2); align-items: baseline; font-size: 15px; line-height: 1.35; color: var(--ink-muted); }
+  .a :global(.to) { flex: none; color: var(--link); transform: translateY(3px); }
+  @media (max-width: 767px) { .calls li { grid-template-columns: 1fr; gap: 2px; } }
+  .h3 { font-size: 1.375rem; }
+  @media (max-width: 959px) {
+    .grid, .two { grid-template-columns: 1fr; gap: var(--space-6); }
+  }
+</style>

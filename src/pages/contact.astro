@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/forms/LeadForm.astro';
+import Phone from '@lucide/astro/icons/phone';
+import Mail from '@lucide/astro/icons/mail';
+import MapPin from '@lucide/astro/icons/map-pin';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import { ADDRESS, OFFICE_MAP_URL, CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, SECURITY_EMAIL } from '../config/site';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../lib/seo';
+import Related from '../components/site/Related.astro';
+import { products } from '../data/products';
+import { solutions } from '../data/solutions';
+import { Image } from 'astro:assets';
+import { photos } from '../data/photos';
+
+const ways = [
+  { icon: Phone, label: 'Sales and support', value: CONTACT_PHONE_DISPLAY, href: CONTACT_PHONE_TEL },
+  { icon: Mail, label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+  { icon: Mail, label: 'Security reports', value: SECURITY_EMAIL, href: `mailto:${SECURITY_EMAIL}` },
+];
+---
+<Base title="Contact" description="Contact LunaCam in Anamnagar, Kathmandu. Sales and support on 985-1343348, or email info@ninjainfosys.com." path="/contact" jsonLd={[localBusinessJsonLd(), breadcrumbJsonLd([{ name: 'Contact', path: '/contact' }])]}>
+  <section class="top">
+    <div class="wrap">
+      <h1 data-enter>Talk to the LunaCam team</h1>
+      <ul class="ways">
+        {ways.map((w, i) => (
+          <li data-enter style={`--d:${i + 1}`}>
+            <a href={w.href}>
+              <span class="icon" aria-hidden="true"><w.icon size={22} stroke-width={1.75} /></span>
+              <span class="label">{w.label}</span>
+              <span class="value">{w.value}</span>
+              <ArrowRight class="go" size={20} stroke-width={2} aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section callback" data-reveal>
+    <div class="wrap split">
+      <div class="form-col">
+        <h2>Or we'll call you</h2>
+        <LeadForm kind="demo" submit="Call me back" />
+      </div>
+      <figure class="photo-col">
+        <Image src={photos.street.src} alt={photos.street.alt.en} widths={[400, 800, 1080]} sizes="(max-width: 959px) 100vw, 420px" quality={90} format="webp" class="photo" />
+        <figcaption>
+          <a class="place" href={OFFICE_MAP_URL} target="_blank" rel="noopener">
+            <span class="pin" aria-hidden="true"><MapPin size={20} stroke-width={1.75} /></span>
+            <span class="where">
+              <span class="city">Kathmandu office</span>
+              <span class="street">{ADDRESS.street}</span>
+            </span>
+            <ArrowUpRight class="out" size={18} stroke-width={2} aria-hidden="true" />
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <Related groups={[
+    { h: 'Products', items: products.map((p) => ({ href: `/products/${p.slug}`, label: p.name })) },
+    { h: 'Industries', items: solutions.map((x) => ({ href: `/solutions/${x.slug}`, label: x.name })) },
+    { h: 'Work with us', items: [{ href: '/resellers', label: 'Become an installer partner' }, { href: '/pricing', label: 'Pricing' }, { href: '/blog', label: 'Insights' }] },
+  ]} />
+</Base>
+
+<style>
+  .top { padding-block: var(--space-9) var(--space-8); }
+  h1 { max-width: 16ch; margin-bottom: var(--space-8); }
+
+  /* Three ways to reach us, each one big tap target. */
+  .ways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  .ways a {
+    display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: 'icon label go' 'value value value';
+    align-items: center; gap: var(--space-3) var(--space-3); padding: var(--space-6);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel);
+    color: var(--ink); text-decoration: none;
+    transition: border-color 200ms var(--ease), transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ways a:hover { border-color: var(--brand); transform: translateY(-3px); }
+  .ways a:active { transform: translateY(0); transition-duration: 90ms; }
+  .ways a:hover .icon { background: var(--brand); color: var(--stage-ink); }
+  .icon { grid-area: icon; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--subtle); color: var(--brand); transition: background-color 200ms var(--ease), color 200ms var(--ease); }
+  .label { grid-area: label; font-size: 16px; color: var(--ink-muted); }
+  .value { grid-area: value; margin-top: var(--space-4); font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem); font-weight: 600; overflow-wrap: anywhere; }
+  .ways :global(.go) { grid-area: go; color: var(--ink-muted); transition: transform var(--fast) var(--ease), color var(--fast) var(--ease); }
+  .ways a:hover :global(.go) { transform: translateX(4px); color: var(--brand); }
+
+  .callback { background: var(--surface); border-top: 1px solid var(--line); }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: var(--space-9); align-items: start; }
+  .form-col h2 { margin-bottom: var(--space-6); }
+  .form-col { max-width: 560px; }
+  .photo-col { position: relative; margin: 0; }
+  .photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-panel); }
+  /* Where the office is, set on the photo itself. */
+  /* Office card laid over the bottom of the photo; opens the Maps place. */
+  figcaption { position: absolute; left: var(--space-4); right: var(--space-4); bottom: var(--space-4); }
+  .place {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-3);
+    padding: var(--space-3) var(--space-4); background: var(--surface); border-radius: var(--radius-panel);
+    color: var(--ink); text-decoration: none; transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .place:hover { transform: translateY(-2px); }
+  .pin { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--subtle); color: var(--brand); }
+  .where { display: grid; gap: 1px; min-width: 0; }
+  .city { font-size: 15px; font-weight: 600; }
+  .street { font-size: 14px; color: var(--ink-muted); line-height: 1.35; }
+  .place :global(.out) { color: var(--ink-muted); transition: color var(--fast) var(--ease); }
+  .place:hover :global(.out) { color: var(--brand); }
+
+
+  @media (prefers-reduced-motion: reduce) { .ways a, .ways a:hover { transform: none; } }
+  @media (max-width: 959px) {
+    .ways { grid-template-columns: 1fr; gap: var(--space-3); }
+    .ways a { padding: var(--space-5); }
+    .split { grid-template-columns: 1fr; gap: var(--space-7); }
+    .photo { max-width: 420px; }
+  }
+</style>

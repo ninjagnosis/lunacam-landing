@@ -1,0 +1,53 @@
+/* LunaCam tokens. Every value here is listed in DESIGN.md; nothing outside it. */
+:root {
+  --canvas: #FFFFFF;
+  --surface: #F5F5F5;
+  --subtle: #EBEBEB;
+  --line: #D4D4D4;
+  --ink: #0A0A0A;
+  --ink-muted: #404040;
+  --brand: #0A0A0A;
+  --on-brand: #FFFFFF;
+  --link: #0A0A0A;
+  --lime: #FFFFFF;
+  --on-lime: #0A0A0A;
+  --stage: #0A0A0A;
+  --stage-ink: #FFFFFF;
+  --stage-muted: #BFBFBF;
+  --stage-line: #3D3D3D;
+  --error: #B3261E;
+
+  /* Inter for everything, as in the LunaCam app. */
+  --font-sans: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --radius-control: 8px;
+  --radius-panel: 12px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --max-width: 1200px;
+  --measure: 680px;
+  --gutter: 16px;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --fast: 150ms;
+  --slow: 250ms;
+
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}
+

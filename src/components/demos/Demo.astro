@@ -1,0 +1,11 @@
+---
+import CameraWall from './CameraWall.astro';
+import Timeline from './Timeline.astro';
+import EventFeed from './EventFeed.astro';
+import type { Product } from '../../data/products';
+export interface Props { demo: Product['demo'] }
+const { demo } = Astro.props;
+---
+{demo.kind === 'live' && <CameraWall />}
+{demo.kind === 'timeline' && <Timeline />}
+{demo.kind === 'feed' && <EventFeed feed={demo.feed!} />}

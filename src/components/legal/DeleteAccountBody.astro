@@ -1,0 +1,37 @@
+---
+import LegalBody from './LegalBody.astro';
+import { CONTACT_EMAIL } from '../../config/site';
+
+const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
+const sections = [
+  {
+    h: 'How to ask',
+    list: [
+      `Write to ${mail} from the email address registered to your account.`,
+      'Put “Delete my account” in the subject.',
+      'We confirm it is you, then delete the account within 30 days and confirm by reply.',
+    ],
+    ordered: true,
+    after: ['If you own an organisation that has other members, tell us whether to close the organisation or hand it to another owner first.'],
+  },
+  {
+    h: 'What is deleted',
+    list: [
+      'Your name, email, phone number, password and sign-in methods.',
+      'Your signed-in devices and notification tokens.',
+      'Your membership of organisations and invitations.',
+      'If you are the only owner and ask us to close the organisation: its devices, recordings, clips, snapshots, events and settings.',
+    ],
+  },
+  {
+    h: 'What is kept',
+    list: [
+      'Footage under a legal hold or in an open case, until the hold or case is closed.',
+      'The audit log, for 3 years, and billing records and invoices, for 7 years.',
+      'Footage that belongs to an organisation you were a member of. It stays with that organisation.',
+      'Backups, which are removed within 14 days.',
+    ],
+  },
+];
+---
+<LegalBody h1="Delete your account" updated="Last updated 10 October 2026" intro={['You can ask us to delete your LunaCam account and the data tied to it.']} sections={sections} />

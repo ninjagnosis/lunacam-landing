@@ -1,0 +1,77 @@
+---
+import LegalBody from './LegalBody.astro';
+import { CONTACT_EMAIL, COMPANY } from '../../config/site';
+
+const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
+
+const c = {
+  h1: 'Terms of service',
+  updated: 'Last updated 10 October 2026',
+  intro: [
+    `These terms are the agreement between you and ${COMPANY} for using LunaCam: the apps, console, website, developer platform and the services behind them. By creating an account or using LunaCam you agree to them. If you use LunaCam for an organisation, you agree on its behalf and confirm you are allowed to.`,
+    `Questions: ${mail}.`,
+  ],
+  sections: [
+    {
+      h: 'Who can use LunaCam',
+      p: ['You must be at least 18, or old enough to make a binding agreement where you live. Give accurate details when you sign up and keep them up to date.'],
+    },
+    {
+      h: 'Your account',
+      p: ['Keep your password, passkeys and devices secure. You are responsible for what happens under your account and your organisation’s account, including what the people you invite do. Tell us at once if you think an account has been misused.'],
+    },
+    {
+      h: 'What LunaCam does',
+      p: ['LunaCam connects to cameras and recorders you own or are allowed to manage, lets authorised people watch live and recorded video, sends alerts, and offers evidence, sharing and developer tools. The service depends on your cameras, your network and your recorders, which we do not control.'],
+    },
+    {
+      h: 'Not a replacement for safety systems',
+      p: ['LunaCam is a viewing and management tool. Do not rely on it as your only alarm, or to call or reach the police (100), an ambulance (102), the fire service (101) or any other emergency service. A camera can fail, go offline or miss an event.'],
+    },
+    {
+      h: 'Your responsibilities',
+      p: ['When you use LunaCam you agree to:'],
+      list: [
+        'Follow the law, including the Privacy Act, 2075 and the rules on telecommunications and consumer protection that apply to you.',
+        'Use cameras only where you may lawfully do so, and tell people they are recorded where the law requires it.',
+        'Give people access only to cameras they should see, and remove access when it is no longer needed.',
+        'Not use LunaCam to spy on people, to harass anyone, or to watch cameras you have no right to.',
+        'Not interfere with the service, test its security without our written permission, or resell it without an agreement with us.',
+      ],
+    },
+    {
+      h: 'Footage and data',
+      p: ['Footage and data from your cameras belong to you or your organisation. You give us the right to store, relay and process it only to provide the service. How we handle it is set out in the <a href="/privacy">privacy policy</a>.'],
+    },
+    {
+      h: 'Payments',
+      list: [
+        'Live view and DVR playback through LunaCam are free to start. Paid plans are priced by camera count, retention days and features, as agreed with you or shown in the app.',
+        'We may change prices. We will tell account owners before a change takes effect.',
+        'Fees already paid are not refundable, except where the law requires it or a charge was our mistake.',
+      ],
+    },
+    {
+      h: 'Installers and dealers',
+      p: ['Installers who manage customer sites need the owner’s approval to access them, and the owner may remove that access at any time. Separate terms apply to the installer program.'],
+    },
+    {
+      h: 'Availability and changes',
+      p: ['We work to keep LunaCam running, but we do not promise it will be uninterrupted. We may change or retire features, and will give notice where a change affects what you rely on.'],
+    },
+    {
+      h: 'Our liability',
+      p: ['To the extent the law allows, we are not liable for indirect or consequential loss, or for loss caused by cameras, networks or third-party services outside our control. Our total liability for a claim is limited to what you paid us in the 12 months before it.'],
+    },
+    {
+      h: 'Ending the agreement',
+      p: ['You can stop using LunaCam and close your account at any time. We may suspend or close an account that breaks these terms or the law. See <a href="/delete-account">how to delete your account</a>.'],
+    },
+    {
+      h: 'Governing law',
+      p: ['These terms are governed by the laws of Nepal, and the courts of Kathmandu have jurisdiction.'],
+    },
+  ],
+};
+---
+<LegalBody h1={c.h1} updated={c.updated} intro={c.intro} sections={c.sections} />

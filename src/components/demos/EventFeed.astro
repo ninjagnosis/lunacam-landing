@@ -1,0 +1,47 @@
+---
+// A scripted list of events. Every line is in the HTML; the lines appear one
+// by one when the demo scrolls into view, and stay visible without script.
+import { feeds } from '../../data/feeds';
+export interface Props { feed: string }
+const { feed } = Astro.props;
+const f = feeds[feed];
+---
+<event-feed class="feed" data-transcript>
+  <div class="bar"><span class="dot" aria-hidden="true"></span><span>{f.title}</span><span class="label">Example</span></div>
+  <ol class="log">
+    {f.lines.map((l) => (
+      <li><span class="at">{l.at}</span><span class="text">{l.text}</span>{l.tag && <span class="tag">{l.tag}</span>}</li>
+    ))}
+  </ol>
+</event-feed>
+
+<script>
+  class EventFeed extends HTMLElement {
+    connectedCallback() {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const items = Array.from(this.querySelectorAll('li'));
+      items.forEach((li) => li.classList.add('waiting'));
+      const io = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        items.forEach((li, i) => setTimeout(() => li.classList.remove('waiting'), 250 + i * 600));
+      }, { threshold: 0.4 });
+      io.observe(this);
+    }
+  }
+  if (!customElements.get('event-feed')) customElements.define('event-feed', EventFeed);
+</script>
+
+<style>
+  .feed { display: block; background: var(--canvas); border: 1px solid var(--line); border-radius: var(--radius-panel); overflow: hidden; }
+  .bar { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--line); font-weight: 600; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand); }
+  .label { margin-left: auto; font-weight: 400; font-size: 16px; color: var(--ink-muted); }
+  .log { list-style: none; margin: 0; padding: var(--space-3) var(--space-5); display: grid; }
+  li { display: grid; grid-template-columns: 78px 1fr auto; gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; border-top: 1px solid var(--line); font-size: 16px; transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease); }
+  li:first-child { border-top: 0; }
+  .at { font-size: 14px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .tag { padding: 2px 8px; border-radius: 6px; background: var(--subtle); font-size: 14px; white-space: nowrap; }
+  li.waiting { opacity: 0; transform: translateY(6px); }
+  @media (max-width: 479px) { li { grid-template-columns: 1fr; gap: 2px; } .tag { justify-self: start; } }
+</style>
