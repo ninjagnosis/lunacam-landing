@@ -1,7 +1,7 @@
 ---
 title: "Night vision and low light: what to check before you buy a CCTV camera"
 description: Most incidents happen in the dark. How sensor size, IR range, white light and WDR decide what a camera records at night, and the mistakes to avoid.
-date: 2026-10-13
+date: 2026-10-12
 tags: [setup, guides]
 faq:
   - q: "Is a bigger IR range always better?"
