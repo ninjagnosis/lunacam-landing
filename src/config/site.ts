@@ -30,3 +30,8 @@ export const OFFICE_MAP_URL = 'https://www.google.com/maps/place/Ninja+Infosys+P
 
 /** LunaCam's official profiles, sent as `sameAs`. None yet. */
 export const SOCIAL_PROFILES: readonly string[] = [];
+
+/** The company the product belongs to. The footer links here, and structured data names it as the parent. */
+export const PARENT_COMPANY_NAME = 'Ninja Infosys LLC';
+export const PARENT_COMPANY_URL = 'https://ninjainfosys.com';
+export const PARENT_COMPANY_ID = 'https://ninjainfosys.com/#organization';
