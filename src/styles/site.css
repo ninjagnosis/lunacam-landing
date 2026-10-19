@@ -1,0 +1,57 @@
+/* The site's stylesheet. Fonts, tokens and the rules only LunaCam uses are its
+   own; base.css and motion.css come from the kit. */
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/source-serif-4/wght.css';
+@import './tokens.css';
+@import '@ninjainfosys/site-kit/styles/base.css';
+@import '@ninjainfosys/site-kit/styles/motion.css';
+
+::selection { background: var(--lime); color: var(--on-lime); }
+
+.btn-lime { background: var(--lime); color: var(--on-lime); }
+.btn-lime:hover { background: var(--stage-ink); }
+
+/* The wordmark beside the logo in the header and the footer. The kit sets a
+   wide lockup; these are weightier selectors so they win over its scoped rules. */
+.site-header .bar .logo { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.site-header .bar .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1; }
+.site-header .bar .logo img { width: 56px; }
+@media (max-width: 399px) { .site-header .bar .logo img { width: 48px; } }
+.site-footer .brand .mark { display: flex; align-items: center; gap: 12px; margin: 0 0 var(--space-5); }
+.site-footer .brand .mark-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+.site-footer .brand .cloud { width: 56px; margin-bottom: 0; }
+
+/* Tactile play buttons: grow and show a ring on hover, squash on press,
+   send one ripple outward on click (call-player.ts adds .ripple). */
+.tap { position: relative; transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1), translate 260ms cubic-bezier(0.2, 0, 0, 1), background-color var(--fast) var(--ease); }
+.tap::before {
+  content: ''; position: absolute; inset: -6px; border-radius: inherit;
+  border: 2px solid var(--stage-ink); opacity: 0; transform: scale(0.92);
+  transition: opacity 180ms var(--ease), transform 180ms cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+}
+.tap:hover { transform: scale(1.06); }
+.tap:hover::before { opacity: 0.9; transform: scale(1); }
+.tap:active, .tap.pressed { transform: scale(0.92); transition-duration: 90ms; }
+.tap.ripple::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--stage-ink);
+  animation: ripple 600ms cubic-bezier(0.2, 0, 0, 1) forwards; pointer-events: none;
+}
+@keyframes ripple { from { opacity: 0.45; transform: scale(1); } to { opacity: 0; transform: scale(2.2); } }
+
+/* Invite a first tap: a faint ring every few seconds until anything plays. */
+.tap.invite::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; border: 2px solid var(--stage-ink);
+  animation: invite 1.8s cubic-bezier(0.2, 0, 0, 1) infinite; pointer-events: none;
+}
+.tap.invite:not(:hover) { animation: taptap 1.8s linear infinite; }
+@keyframes invite { 0% { opacity: 0.9; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(2.3); } }
+/* Tap-tap: two quick springy bumps, then a rest. */
+@keyframes taptap {
+  0% { transform: scale(1); }
+  7% { transform: scale(1.14); }
+  13% { transform: scale(0.95); }
+  20% { transform: scale(1.1); }
+  27% { transform: scale(0.98); }
+  33%, 100% { transform: scale(1); }
+}
