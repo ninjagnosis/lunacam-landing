@@ -413,7 +413,7 @@ There is no price list for labour, so ask each installer for a written quote tha
 1. The make and model of every part, so you can check it against the listings above.
 2. Cable length and type: pure copper or CCA, and coax or CAT6.
 3. The number of cameras in any kit, and the resolution of each.
-4. The disk size, make and warranty, and how many days of recording it holds at your cameras' bitrate.
+4. The disk size, make and warranty, and [how many days of recording it holds](/blog/cctv-hard-disk-recording-days) at your cameras' bitrate.
 5. Price per camera for fitting and cabling, plus drilling and conduit.
 6. Recorder setup, phone app setup and password handover. See the [installer handover guide](/blog/installer-site-handover-guide).
 7. Warranty on the work, and who to call.
