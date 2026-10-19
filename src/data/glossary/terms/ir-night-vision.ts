@@ -13,6 +13,7 @@ const term: Term = {
   body: [
     "In daylight the camera uses colour. When it gets dark the camera swings a filter out of the way, switches on its infrared LEDs and records in monochrome. You see detail where there is no visible light at all.",
     "The range in the box is optimistic. Real distance depends on the scene, the lens, the weather and what is nearby.",
+    "For a practical guide to getting clear night footage, read [CCTV night vision and low light](/blog/cctv-night-vision-low-light-guide).",
   ],
   sections: [
     {

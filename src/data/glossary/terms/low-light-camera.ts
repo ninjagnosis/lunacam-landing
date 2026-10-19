@@ -12,6 +12,7 @@ const term: Term = {
   body: [
     "Where an ordinary camera turns black and white under infrared, a low-light camera collects enough light to keep colour with only streetlight or a shop sign. Brand names include Starlight, ColorVu, Darkfighter and Full-colour.",
     "The result depends mostly on the sensor and the lens, not on a megapixel number. It also depends on whether any light exists at all. Total darkness still needs infrared or a lamp.",
+    "For a practical guide to getting clear night footage, read [CCTV night vision and low light](/blog/cctv-night-vision-low-light-guide).",
   ],
   sections: [
     {
