@@ -6,7 +6,7 @@ import { postSchema } from './lib/blog-schema';
 // missing or wrong field. No author byline: posts are by LunaCam.
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
-  schema: postSchema,
+  schema: ({ image }) => postSchema.extend({ cover: image().optional() }),
 });
 
 export const collections = { blog };

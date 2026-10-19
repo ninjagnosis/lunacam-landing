@@ -3,6 +3,36 @@ title: "Choosing CCTV cameras: resolution, lens, night vision and power"
 description: Megapixels are only part of it. How to pick resolution, lens, night vision, housing and power for each spot so the footage shows what you need.
 date: 2026-10-12
 tags: [setup, guides]
+updated: 2026-10-19
+cover: ../../assets/blog/choosing-cctv-cameras-nepal/ceiling-dome-cameras-entrance.jpg
+coverAlt: Small black dome security camera on a white curved ceiling beside a speaker and a recessed light
+takeaways:
+  - "Decide for each spot whether the footage must watch, recognise or identify."
+  - "Choose the lens by distance and detail, and use the lowest resolution that gives enough detail."
+  - "Check night performance, use WDR for bright doorways, and choose IP66 or IP67 outdoors."
+  - "Prefer PoE, check ONVIF and RTSP support, change default passwords and put everything on backup power."
+credits:
+  - file: ceiling-dome-cameras-entrance.jpg
+    title: "WTC Hub td 09 - IND Entrance"
+    author: "Tdorante10"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Tdorante10"
+    source: "https://commons.wikimedia.org/wiki/File:WTC_Hub_td_09_-_IND_Entrance.jpg"
+    licence: CC BY-SA 4.0
+    changes: "Resized"
+  - file: cctv-dome-camera-subway.jpg
+    title: "CCTV dome camera subway Rotterdam"
+    author: "Sanderflight"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Sanderflight"
+    source: "https://commons.wikimedia.org/wiki/File:CCTV_dome_camera_subway_Rotterdam.jpg"
+    licence: CC BY-SA 4.0
+    changes: "Resized and cropped"
+  - file: omotesando-dome-camera-ceiling.jpg
+    title: "Omotesando Hills dome camera"
+    author: "Syced"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Syced"
+    source: "https://commons.wikimedia.org/wiki/File:Omotesando_Hills_dome_camera.jpg"
+    licence: CC BY-SA 3.0
+    changes: "Resized and cropped"
 faq:
   - q: "How many megapixels do I need?"
     a: "For most shops and homes, 2 to 4 megapixels is enough when the camera is placed well. Higher resolution helps for wide areas, but it uses more storage and needs more light."
@@ -49,6 +79,8 @@ The lens decides how wide the camera sees. The number in millimetres is the foca
 - **6 mm and above:** narrower. Shows faces and plates further away.
 - **Varifocal:** adjustable, often 2.8 to 12 mm. The installer sets it on site. Costs more, but avoids guessing.
 
+![White and black pan-tilt-zoom network camera on a stand with a second camera behind it](../../assets/blog/choosing-cctv-cameras-nepal/omotesando-dome-camera-ceiling.jpg "A pan-tilt-zoom camera changes its view by motor, but a fixed camera with the right lens is cheaper and enough for most doors. Photo: Syced, CC BY-SA 3.0")
+
 A useful rule: if you need to identify people at a door, mount the camera so the door fills most of the picture. Wide is not better. Wide is just wide.
 
 ## Night vision
@@ -66,6 +98,8 @@ If a spot has a bright light behind the subject, such as a glass shopfront in da
 - **Dome cameras** are harder to knock out of position and their direction is less obvious. Good indoors and under eaves.
 - **Bullet cameras** are visible and point one clear way. Good as a deterrent and for long views outside.
 - **Turret cameras** are like domes without the plastic cover, so IR does not reflect inside them. A good all-round choice.
+
+![Ceiling-mounted dome security camera in a station concourse overlooking stairs and escalators](../../assets/blog/choosing-cctv-cameras-nepal/cctv-dome-camera-subway.jpg "A dome camera under a ceiling is hard to knock out of position and its direction is less obvious. Photo: Sanderflight, CC BY-SA 4.0")
 
 For outdoor cameras, look for an **IP66 or IP67** rating against dust and rain. For cameras within reach, look for **IK10** against impact. In the monsoon, a cheap seal fails quickly, and water inside the lens ruins the picture.
 
@@ -90,6 +124,12 @@ The cameras are only half the system. Check that the recorder:
 - Supports the number of cameras you plan, with room to add more.
 - Supports each camera's resolution and codec. **H.265** uses about half the storage of H.264 for similar quality.
 - Has enough disk for the number of days you need to keep. Use surveillance-rated hard drives, which are built to write all day.
+
+## What cameras cost in Nepal
+
+Prices vary by brand, resolution and dealer. One published data point is [WorldLink's camera page](https://worldlink.com.np/cctv-camera-price-in-nepal/), which lists a Dristi smart IP camera (3 MP) at Rs 3,250 for WorldLink customers against a market price it gives as Rs 7,250 (checked October 2026). The offer was published in 2024, so ask for today's price.
+
+Recorder, hard disk, cable and installation are quoted separately by dealers. Ask for an itemised quote so you can compare like with like.
 
 ## A worked example: a small shop
 

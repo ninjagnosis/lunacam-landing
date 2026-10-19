@@ -3,6 +3,36 @@ title: "Night vision and low light: what to check before you buy a CCTV camera"
 description: Most incidents happen in the dark. How sensor size, IR range, white light and WDR decide what a camera records at night, and the mistakes to avoid.
 date: 2026-10-13
 tags: [setup, guides]
+updated: 2026-10-19
+cover: ../../assets/blog/cctv-night-vision-low-light-guide/kathmandu-night-street-view.jpg
+coverAlt: Kathmandu at night seen from above, with light trails along a curving road, a market stall street and a lit office building
+takeaways:
+  - "Night footage depends on sensor size, lens aperture, IR or white light, WDR and how much light you add."
+  - "More megapixels do not help at night. A larger sensor and a faster lens do."
+  - "IR range figures are optimistic and IR bounces off glass, walls and rain."
+  - "A steady lamp at the door or gate helps more than a better camera, and a test at night beats a brochure."
+credits:
+  - file: kathmandu-night-street-view.jpg
+    title: "Night street view of Kathmandu MG 2835"
+    author: "Bijaya2043"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Bijaya2043"
+    source: "https://commons.wikimedia.org/wiki/File:Night_street_view_of_Kathmandu_MG_2835.jpg"
+    licence: CC BY-SA 4.0
+    changes: "Resized and cropped"
+  - file: infrared-security-camera-footage-night.jpg
+    title: "Fox (security camera footage) (27965679324)"
+    author: "Mike's Birds from Riverside, CA, US"
+    authorUrl: "https://www.flickr.com/people/42646706@N02"
+    source: "https://commons.wikimedia.org/wiki/File:Fox_(security_camera_footage)_(27965679324).jpg"
+    licence: CC BY-SA 2.0
+    changes: "Resized"
+  - file: thamel-at-night-street-lights.jpg
+    title: "Thamel at Night - Kathmandu, Nepal (7)"
+    author: "Saddam Hussain Ansari"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Saddam19"
+    source: "https://commons.wikimedia.org/wiki/File:Thamel_at_Night_-_Kathmandu,_Nepal_(7).jpg"
+    licence: CC BY 4.0
+    changes: "Resized"
 faq:
   - q: "Is a bigger IR range always better?"
     a: "No. IR range is measured in ideal conditions. A camera that covers a 10 metre area does not need 50 metres of IR, and too much IR close to a wall or a glass door washes the picture out."
@@ -58,6 +88,8 @@ A few things to know.
 - **Spiders and insects.** Cobwebs near the lens, lit by IR, fill the image with bright flashes. Position cameras away from them and clean regularly.
 - **Dome covers.** A plastic dome can bounce IR back inside the camera. Turret and bullet cameras avoid this, which is why they are common choices for night coverage.
 
+![Black and white infrared security camera frame of a fox standing on a road at night with a bright foreground](../../assets/blog/cctv-night-vision-low-light-guide/infrared-security-camera-footage-night.jpg "An infrared picture is black and white and brightest near the camera, so test the range you actually need. Photo: Mike's Birds from Riverside, CA, US, CC BY-SA 2.0")
+
 ## Colour at night
 
 An IR image is black and white. That helps you see that someone is there, but not what they were wearing or what colour the vehicle was, which is often exactly what an investigation needs.
@@ -68,6 +100,8 @@ There are two approaches.
 - **Hybrid white light.** The camera records in IR normally and switches on a small white lamp when it detects a person. It gives true colour exactly when it matters, and a visible lamp can deter someone before they act.
 
 Which is better depends on the place. A dark yard behind a shop suits IR. A front door with a street lamp nearby suits colour. An entrance where you want a deterrent suits a white light. Many sites use a mix.
+
+![Narrow Thamel lane in Kathmandu at night lit by shop signs, street lamps and motorbike tail lights](../../assets/blog/cctv-night-vision-low-light-guide/thamel-at-night-street-lights.jpg "Shop signs and street lamps give colour night vision some light to work with, while dark side lanes need infrared. Photo: Saddam Hussain Ansari, CC BY 4.0")
 
 ## WDR and bright lights in the dark
 

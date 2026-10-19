@@ -9,7 +9,7 @@
     "build": "node scripts/redirects.mjs && astro build && node scripts/sitemap.mjs dist",
     "preview": "astro preview",
     "test": "vitest run",
-    "check": "node scripts/check-site.mjs dist",
+    "check": "node scripts/check-credits.mjs && node scripts/check-site.mjs dist",
     "indexnow": "node scripts/indexnow.mjs",
     "bundle": "pnpm run build && node scripts/make-bundle.mjs",
     "verify": "node scripts/make-bundle.mjs --verify-only",

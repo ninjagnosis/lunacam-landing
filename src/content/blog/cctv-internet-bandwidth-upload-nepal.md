@@ -3,6 +3,35 @@ title: "How much internet does CCTV need? Upload bandwidth maths for Nepali conn
 description: "Why remote CCTV buffers on a fast plan, how to work out the upload speed your cameras need, and the settings that make live view smooth in Nepal."
 date: 2026-10-14
 tags: [setup, guides]
+updated: 2026-10-19
+cover: ../../assets/blog/cctv-internet-bandwidth-upload-nepal/network-switches-rack-cables.jpg
+coverAlt: Close-up of network switches with blue and grey Ethernet patch cables plugged into numbered ports
+takeaways:
+  - "For remote viewing, the site upload speed matters, not the download speed on the plan."
+  - "Measure upload at the camera site at three times of day and use the lowest figure."
+  - "Use sub streams for grids and keep what is watched at once under half of the measured upload."
+  - "Wired links, H.265 where supported and sensible frame rates fix most buffering."
+credits:
+  - file: network-switches-rack-cables.jpg
+    title: "Network switches"
+    author: "ShakataGaNai"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:ShakataGaNai"
+    source: "https://commons.wikimedia.org/wiki/File:Network_switches.jpg"
+    licence: CC BY-SA 3.0
+    changes: "Resized and cropped"
+  - file: wifi-router-front-panel.jpg
+    title: "TP-Link AX1500 Wi-Fi 6 Router Front"
+    author: "Abhi25t"
+    source: "https://commons.wikimedia.org/wiki/File:TP-Link_AX1500_Wi-Fi_6_Router_Front.jpg"
+    licence: CC BY-SA 4.0
+    changes: "Resized"
+  - file: server-rack-network-cables.jpg
+    title: "Server Rack with Spaghetti-Like Mass of Network Cables"
+    author: "Kim Scarborough from Chicago, IL"
+    authorUrl: "https://www.flickr.com/people/97321205@N00"
+    source: "https://commons.wikimedia.org/wiki/File:Server_Rack_with_Spaghetti-Like_Mass_of_Network_Cables.jpg"
+    licence: CC BY-SA 2.0
+    changes: "Resized"
 faq:
   - q: "How much internet speed do I need for CCTV?"
     a: "For watching remotely, what matters is your site's upload speed, not download. A sub stream needs roughly 0.3 to 1 Mbps per camera, and a full quality 1080p main stream roughly 2 to 4 Mbps. Add up what will be watched at the same time and keep it under about half of your measured upload."
@@ -49,6 +78,8 @@ Do this at the camera site, not at home.
 Write down the **lowest** of the three. That is your honest budget. Providers share capacity among customers, and the evening dip is real. A system planned on the morning figure will work in the morning and fail when you most often check it, which is after closing.
 
 If your router's status page shows a WAN address in the 100.64 to 100.127 range, you are also behind a shared address, which affects how remote viewing connects at all. We wrote about that separately in [why remote viewing fails behind CGNAT](/blog/cctv-remote-viewing-cgnat-nepal).
+
+![Black four-antenna Wi-Fi 6 router seen from the front, the kind many shops use as their gateway](../../assets/blog/cctv-internet-bandwidth-upload-nepal/wifi-router-front-panel.jpg "The router is where the site upload speed is set, so run the speed test from a device on the same one as the recorder. Photo: Abhi25t, CC BY-SA 4.0")
 
 ## What a camera actually sends: bitrate
 
@@ -171,6 +202,8 @@ Sometimes the upload is fine and the problem is somewhere else. Check these befo
 
 **The recorder's network port.** Many older recorders have a 100 Mbps port. That is usually enough, but not if it also serves local viewing to a large monitor wall at the same time.
 
+![Tangled mass of blue, white and red network patch cables hanging in front of a rack of network equipment](../../assets/blog/cctv-internet-bandwidth-upload-nepal/server-rack-network-cables.jpg "A recorder on a cheap repeater or a messy cable run is limited by that link, whatever the plan says. Photo: Kim Scarborough from Chicago, IL, CC BY-SA 2.0")
+
 **Wi-Fi between the recorder and the router.** A recorder on a weak Wi-Fi link, or on a cheap repeater, is limited by that link. Use a cable wherever you can.
 
 **Camera settings set too high for the purpose.** A 4K camera at 25 frames per second watching a storeroom door is a lot of data for very little information. Ten or twelve frames per second is plenty for most fixed scenes and saves a great deal.
@@ -191,6 +224,12 @@ If you only do one thing after reading this, go through this list on your record
 6. **Smaller grids.** Nine tiles on a phone is plenty. Use views or pages for the rest.
 7. **Cable, not Wi-Fi,** from recorder to router.
 8. **Measure evening upload,** and keep remote viewing under half of it.
+
+## What upload costs in Nepal
+
+Plans are sold by download speed, so ask the provider for the upload figure in writing. For reference, Nepal Telecom announced these annual fibre plans on 16 October 2026: Rs 4,999 for 30 Mbps, Rs 11,499 for 100 Mbps, Rs 12,999 for 150 Mbps and Rs 16,499 for 200 Mbps, with a phone line included ([ShareSansar](https://www.sharesansar.com/newsdetail/nepal-telecom-unveils-30-mbps-fiber-internet-at-rs-4999-a-year-2026-10-16), checked October 2026). PriceNepal lists WorldLink unlimited plans at Rs 1,199 a month for 25 Mbps and Rs 1,999 a month for 100 Mbps ([PriceNepal](https://www.pricenepal.com/worldlink-internet-plan-nepal-2026/), checked October 2026).
+
+Provider pages disagree on whether prices include VAT and whether they are billed monthly or yearly, so confirm both. A higher download speed does not promise more upload. For CCTV, pay for the upload you measured, not the headline number.
 
 ## What this means when you buy
 
