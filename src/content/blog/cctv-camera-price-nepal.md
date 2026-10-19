@@ -200,7 +200,7 @@ Four things follow from the table.
 
 ## Hard disks
 
-The disk is where footage lives. WD's Purple datasheet describes the range as built for 24x7 video surveillance recording, with a workload rating of up to 180 TB a year (three times a desktop drive, in its words), a 3 year limited warranty, and support for up to 64 single-stream HD cameras. The [surveillance hard drive](/glossary/surveillance-hard-drive) entry explains the difference from a desktop disk. Source: [WD Purple data sheet](https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/internal-drives/wd-purple-hdd/data-sheet-wd-purple-hdd.pdf).
+The disk is where footage lives. WD's Purple datasheet describes the range as built for 24x7 video surveillance recording, with a workload rating of up to 180 TB a year (three times a desktop drive, in its words), a 3 year limited warranty, and support for up to 64 single-stream HD cameras. The surveillance hard drive entry explains the difference from a desktop disk. Source: [WD Purple data sheet](https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/internal-drives/wd-purple-hdd/data-sheet-wd-purple-hdd.pdf).
 
 | Item | Key spec | Seller | Price (Rs) | Source | Checked |
 |---|---|---|---|---|---|
@@ -238,7 +238,7 @@ WD's datasheet uses a stream of 3.2 Mbps (1080p, H.265, 25 fps) in its camera su
 | 8 | 276 | 1.8 | 3.6 | 7.2 |
 | 16 | 553 | 0.9 | 1.8 | 3.6 |
 
-These days use the disk's full nominal size and ignore the space the recorder keeps free, so real figures are lower. Your cameras may run at a lower bitrate, and recorders can record only on motion. The Rs 22,470 kit's 500 GB disk would hold under four days of four cameras at WD's stream rate. Read the hard disk days guide for the full tables, and check the actual bitrate in your recorder menu.
+These days use the disk's full nominal size and ignore the space the recorder keeps free, so real figures are lower. Your cameras may run at a lower bitrate, and recorders can record only on motion. The Rs 22,470 kit's 500 GB disk would hold under four days of four cameras at WD's stream rate. Read the [hard disk days guide](/blog/cctv-hard-disk-recording-days) for the full tables, and check the actual bitrate in your recorder menu.
 
 A second consequence: at 34.6 GB a day, a camera writes about 12.6 TB a year. Fourteen such cameras on one disk would reach WD's 180 TB a year workload rating, so a large system needs more than one disk.
 
