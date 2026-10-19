@@ -9,7 +9,7 @@ cover: ../../assets/blog/privacy-act-2075-cctv-nepal/cctv-warning-sign-notice.jp
 coverAlt: Green and black warning sign on a mesh fence saying images are being recorded for crime prevention
 takeaways:
   - "Government and public bodies that install CCTV are to inform the police or District Administration Office within 15 days."
-  - "Footage is to be kept for at least three months, and longer while a case is open."
+  - "The three-month minimum for keeping footage comes from the Home Ministry's CCTV procedure, not the Privacy Act itself."
   - "Footage is to be given to the police on request, so operators need a request and delivery trail."
   - "Banks, financial institutions, malls, jewelers and cybercafes are among the places required to run CCTV."
   - "This is a plain summary, not legal advice."
@@ -37,7 +37,7 @@ faq:
   - q: "Does every shop need to notify the police?"
     a: "The notice duty summarised here applies to government and public bodies that install CCTV. Private operators should read the Act or ask a lawyer about their own duties."
   - q: "How long must footage be kept?"
-    a: "The Act is summarised as asking for at least three months of footage."
+    a: "The Act sets no retention period. The Ministry of Home Affairs' CCTV Installation and Operation Procedure, as amended in 2019, asks for footage to be kept for at least three months and shared with Nepal Police on request."
   - q: "Is this legal advice?"
     a: "No. It is a plain-language summary. Check the Act and your own circumstances with a lawyer."
 ---
@@ -54,7 +54,7 @@ Government and public bodies that install CCTV are to inform the police or the D
 
 ## 2. Footage is kept for a minimum period
 
-Footage is to be kept for at least three months. That is a floor. If a case is open, footage involved is held for as long as the case needs.
+The Privacy Act itself sets no retention period. The three-month figure comes from the Ministry of Home Affairs' CCTV Installation and Operation Procedure, which, as amended in 2019, says footage records shall be kept for at least three months and provided to Nepal Police and other agencies on request ([Himalayan Times, 15 February 2019](https://thehimalayantimes.com/kathmandu/misuse-of-cctvs-made-punishable)). Treat it as a floor. If a case is open, footage involved is held for as long as the case needs.
 
 ## 3. Police can ask for it
 

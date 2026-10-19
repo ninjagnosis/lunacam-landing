@@ -35,7 +35,7 @@ credits:
     changes: "Resized"
 faq:
   - q: "How many days of footage should a shop keep?"
-    a: "Long enough to cover how long it takes you to notice a problem. Many shops start with 30 days and adjust. The Privacy Act, 2075 is summarised as asking for three months in places it applies to."
+    a: "Long enough to cover how long it takes you to notice a problem. Many shops start with 30 days and adjust. The Ministry of Home Affairs' CCTV procedure asks for at least three months; the Privacy Act, 2075 sets no period."
   - q: "Can my manager see only the shop floor?"
     a: "Yes. Give each person only the cameras they need."
   - q: "What if the DVR disk fails?"
@@ -63,7 +63,7 @@ Quiet hours stop alerts waking you for things you do not need. See [Alerts and A
 
 ## How long to keep footage
 
-Keep it for as long as it takes you to notice a problem, then add a margin. Thirty days is a common start. If the Privacy Act, 2075 applies to your kind of business, plan for at least three months. See [what the Act asks](/blog/privacy-act-2075-cctv-nepal).
+Keep it for as long as it takes you to notice a problem, then add a margin. Thirty days is a common start. The Ministry of Home Affairs' CCTV Installation and Operation Procedure asks for at least three months of footage, so plan for that. See [what the Act asks](/blog/privacy-act-2075-cctv-nepal).
 
 ## Finding the moment
 

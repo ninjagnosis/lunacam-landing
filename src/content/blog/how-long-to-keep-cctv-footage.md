@@ -10,7 +10,7 @@ takeaways:
   - "Retention is the number of days before the recorder overwrites old video, and disk size usually decides it for you."
   - "One 4 MP camera recording all day needs about 43 GB a day, or about 1.3 TB for 30 days."
   - "Cut camera count on continuous recording before you cut days."
-  - "Nepal's Privacy Act, 2075 is commonly read to ask for at least three months of footage."
+  - "The Home Ministry's CCTV procedure asks for at least three months of footage; the Privacy Act, 2075 sets no period."
   - "Export or hold an important clip so the overwrite does not reach it."
 credits:
   - file: sata-hard-disk-cctv-storage.jpg
@@ -37,7 +37,7 @@ faq:
   - q: "How many days of footage should a shop keep?"
     a: "At least thirty days is a safe aim for most shops, because many problems, such as a stock shortfall or a disputed refund, are noticed late. Check the figure against what your disks can hold."
   - q: "Does Nepal's law set a minimum?"
-    a: "Nepal's Privacy Act, 2075 is read to ask for footage to be kept for at least three months. Confirm the current rule for your sector with a lawyer."
+    a: "At least three months, under the Ministry of Home Affairs' CCTV Installation and Operation Procedure as amended in 2019. The Privacy Act, 2075 itself sets no period. Confirm the current rule for your sector with a lawyer."
   - q: "How do I keep one incident longer than the rest?"
     a: "Export it, or place it under legal hold, so the normal overwrite does not delete it. See the evidence export guide."
 ---
@@ -75,7 +75,7 @@ Surveillance disks are sold on Daraz by several sellers, and prices differ even 
 
 ## What the law asks
 
-Under Nepal's Privacy Act, 2075, footage is commonly read to need keeping for three months. Banks and public bodies often have their own, longer rules. Read the details in [the Privacy Act and CCTV in Nepal](/blog/privacy-act-2075-cctv-nepal).
+Nepal's Privacy Act, 2075 sets no retention period. The three-month minimum comes from the Ministry of Home Affairs' CCTV Installation and Operation Procedure, as amended in 2019 ([Himalayan Times, 15 February 2019](https://thehimalayantimes.com/kathmandu/misuse-of-cctvs-made-punishable)). Banks and public bodies often have their own, longer rules. Read the details in [the Privacy Act and CCTV in Nepal](/blog/privacy-act-2075-cctv-nepal).
 
 ## Keep the important moments longer
 
