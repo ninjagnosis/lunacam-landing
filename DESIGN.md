@@ -32,6 +32,9 @@ enforces what can be checked by code.
 | `--stage-muted` | `#E0E0E0` | secondary text on stage |
 | `--stage-line` | `#5C5C5C` | borders on stage |
 | `--error` | `#B3261E` | form errors |
+| `--mark` | = `--ink` | bullets, the reading progress bar |
+| `--warn-bg` | = `--subtle` | warning callout panel in posts (stays black and white) |
+| `--warn-ink` | = `--ink` | text on the warning panel |
 
 Print only: `#FFFFFF` background, `#000000` text.
 Theme colour meta: `#FFFFFF`. The site is light only.
@@ -72,3 +75,5 @@ Radius 8px (controls), 12px (panels). Inline code 4px. Borders 1px. No
 The camera grid, timeline and event lists on product pages are examples of the
 screens, labelled "Example". They are not customer data and carry no
 testimonials.
+
+Fonts are tokens (`--font-sans`, `--font-display`, `--font-mono`, `--font-serif`); the shared blog and glossary styles use only these.

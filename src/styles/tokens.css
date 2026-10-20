@@ -16,11 +16,15 @@
   --stage-muted: #E0E0E0;
   --stage-line: #5C5C5C;
   --error: #B3261E;
+  --mark: var(--ink);
+  --warn-bg: var(--subtle);
+  --warn-ink: var(--ink);
 
   /* Inter for everything, as in the LunaCam app. */
   --font-sans: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-serif: 'Source Serif 4 Variable', 'Serif Fallback', Georgia, serif;
 
   --radius-control: 8px;
   --radius-panel: 12px;
