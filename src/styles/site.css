@@ -1,6 +1,7 @@
 /* The site's stylesheet. Fonts, tokens and the rules only LunaCam uses are its
    own; base.css and motion.css come from the kit. */
-@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/manrope/wght.css';
+@import '@fontsource-variable/geist/wght.css';
 @import '@fontsource-variable/source-serif-4/wght.css';
 @import './tokens.css';
 @import '@ninjainfosys/site-kit/styles/base.css';

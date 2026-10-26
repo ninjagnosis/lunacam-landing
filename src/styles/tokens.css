@@ -20,9 +20,9 @@
   --warn-bg: var(--subtle);
   --warn-ink: var(--ink);
 
-  /* Inter for everything, as in the LunaCam app. */
-  --font-sans: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Geist for reading, Manrope for headings, as in the AirFone app. */
+  --font-sans: 'Geist Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --font-serif: 'Source Serif 4 Variable', 'Serif Fallback', Georgia, serif;
 
